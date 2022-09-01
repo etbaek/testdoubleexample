@@ -6,20 +6,20 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class testDoubleTest {
+public class TestDoubleTests {
     @Nested
     class FakeTest{
         FakeRepository fakeRepository;
-        Example testDoubles;
+        Example example;
         @BeforeEach
         void setUp() {
             fakeRepository = new FakeRepository();
-            testDoubles = new Example(fakeRepository);
+            example = new Example(fakeRepository);
         }
 
         @Test
         void testMethod_returnsTrue() {
-            String result = testDoubles.testMethod("test");
+            String result = example.testMethod("test");
 
             assertThat(result).isEqualTo("value+test");
         }
@@ -47,16 +47,16 @@ public class testDoubleTest {
     @Nested
     class SpyTest{
         SpyRepository spyRepository;
-        Example testDoubles;
+        Example example;
         @BeforeEach
         void setUp() {
             spyRepository = new SpyRepository();
-            testDoubles = new Example(spyRepository);
+            example = new Example(spyRepository);
         }
 
         @Test
         void testMethod_returnsTrue() {
-            testDoubles.stubMethod("input");
+            example.stubMethod("input");
 
             assertThat(spyRepository.get_argumentKey).isEqualTo("input");
         }
@@ -65,16 +65,16 @@ public class testDoubleTest {
     @Nested
     class DummyClass {
         DummyRepository dummyRepository;
-        Example testDoubles;
+        Example example;
         @BeforeEach
         void setUp() {
             dummyRepository = new DummyRepository();
-            testDoubles = new Example(dummyRepository);
+            example = new Example(dummyRepository);
         }
 
         @Test
         void testMethod_returnsTrue() {
-            String result = testDoubles.dummyMethod();
+            String result = example.dummyMethod();
 
             assertThat(result).isEqualTo("a");
         }
